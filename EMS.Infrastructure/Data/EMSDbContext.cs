@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using EMS.Core.Entities.ManagerAggregate;
+using Microsoft.EntityFrameworkCore;
 
 namespace EMS.Infrastructure.Data
 {
@@ -6,10 +7,14 @@ namespace EMS.Infrastructure.Data
     {
         public EMSDbContext(DbContextOptions options) : base(options) { }
 
+        public DbSet<Manager> Managers { get; set; }
+
+        public DbSet<Employee> Employees { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.ApplyConfigurationsFromAssembly(this.GetType().Assembly);
+            modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
         }
     }
 }

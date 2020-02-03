@@ -5,11 +5,11 @@ VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{EF3BED7F-0F22-4856-A874-95AF84A48D22}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EMS.Web", "EMS.Web\EMS.Web.csproj", "{A644E4E1-BC70-441F-9995-572902ECAEAF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EMS.Web", "EMS.Web\EMS.Web.csproj", "{A644E4E1-BC70-441F-9995-572902ECAEAF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EMS.Infrastructure", "EMS.Infrastructure\EMS.Infrastructure.csproj", "{E882BF25-28E3-4E80-9D4F-74C8181B6BBC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EMS.Infrastructure", "EMS.Infrastructure\EMS.Infrastructure.csproj", "{E882BF25-28E3-4E80-9D4F-74C8181B6BBC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EMS.Core", "EMS.Core\EMS.Core.csproj", "{568AC067-FE80-4183-BBA1-7390BAE3078A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EMS.Core", "EMS.Core\EMS.Core.csproj", "{568AC067-FE80-4183-BBA1-7390BAE3078A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

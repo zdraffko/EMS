@@ -2,9 +2,9 @@
 
 namespace EMS.Core.Entities.ManagerAggregate
 {
-    public class Employee
+    public class Employee : BaseEntity
     {
-        public Guid EmployeeId { get; }
+        public Guid EmployeeGuid { get; }
 
         public string FirstName { get; }
 
@@ -12,32 +12,29 @@ namespace EMS.Core.Entities.ManagerAggregate
 
         public int Age { get; }
 
-        public string Email { get; }
-
         public string Department { get; }
 
         public decimal Salary { get; set; }
 
-        public Guid ManagerId { get; }
+        public Guid ManagerGuid { get; }
 
-        public Employee(string firstName, string lastName, int age, string email, string department, decimal salary, Guid managerId)
+        public Employee(string firstName, string lastName, int age, string department, decimal salary, Guid managerGuid)
         {
-            if (!ValidateState(firstName, lastName, age, email, department, salary))
+            if (!ValidateState(firstName, lastName, age, department, salary))
             {
                 throw new Exception();
             }
 
-            EmployeeId = Guid.NewGuid();
+            EmployeeGuid = Guid.NewGuid();
             FirstName = firstName;
             LastName = lastName;
             Age = age;
-            Email = email;
             Department = department;
             Salary = salary;
-            ManagerId = managerId;
+            ManagerGuid = managerGuid;
         }
 
-        private bool ValidateState(string firstName, string lastName, int age, string email, string department, decimal salary)
+        private static bool ValidateState(string firstName, string lastName, int age, string department, decimal salary)
         {
             if (string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName))
             {
@@ -45,11 +42,6 @@ namespace EMS.Core.Entities.ManagerAggregate
             }
 
             if (age < 18)
-            {
-                return false;
-            }
-
-            if (string.IsNullOrWhiteSpace(email))
             {
                 return false;
             }

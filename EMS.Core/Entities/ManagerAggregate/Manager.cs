@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 namespace EMS.Core.Entities.ManagerAggregate
 {
-    public class Manager : IAggregateRoot
+    public class Manager : BaseEntity, IAggregateRoot
     {
-        public Guid ManagerId { get; }
+        public Guid ManagerGuid { get; }
 
         public string FirstName { get; }
 
@@ -14,39 +14,36 @@ namespace EMS.Core.Entities.ManagerAggregate
 
         public int Age { get; }
 
-        public string Email { get; }
-
         private readonly List<Employee> _employees;
         public IReadOnlyCollection<Employee> Employees => _employees;
 
-        public Manager(string firstName, string lastName, int age, string email)
+        public Manager(string firstName, string lastName, int age)
         {
-            if (!ValidateState(firstName, lastName, age, email))
+            if (!ValidateState(firstName, lastName, age))
             {
                 throw new Exception("Constructor is invalid");
             }
 
-            ManagerId = Guid.NewGuid();
+            ManagerGuid = Guid.NewGuid();
             FirstName = firstName;
             LastName = lastName;
             Age = age;
-            Email = email;
             _employees = new List<Employee>();
         }
 
-        public void HireEmployee(string firstName, string lastName, int age, string email, string department, decimal salary)
+        public void HireEmployee(string firstName, string lastName, int age, string department, decimal salary)
         {
-            _employees.Add(new Employee(firstName, lastName, age, email, department, salary, ManagerId));
+            _employees.Add(new Employee(firstName, lastName, age, department, salary, ManagerGuid));
         }
 
-        public void FireEmployee(Guid employeeId)
+        public void FireEmployee(Guid employeeGuid)
         {
-            if (employeeId == null)
+            if (employeeGuid == null)
             {
-                throw new ArgumentNullException(nameof(employeeId));
+                throw new ArgumentNullException(nameof(employeeGuid));
             }
 
-            var employee = _employees.Find(e => e.EmployeeId == employeeId);
+            var employee = _employees.Find(e => e.EmployeeGuid == employeeGuid);
 
             if (employee == null)
             {
@@ -56,11 +53,11 @@ namespace EMS.Core.Entities.ManagerAggregate
             _employees.Remove(employee);
         }
 
-        public void PromoteEmployee(Guid employeeId, decimal promotionAmount)
+        public void PromoteEmployee(Guid employeeGuid, decimal promotionAmount)
         {
-            if (employeeId == null)
+            if (employeeGuid == null)
             {
-                throw new ArgumentNullException(nameof(employeeId));
+                throw new ArgumentNullException(nameof(employeeGuid));
             }
 
             if (promotionAmount <= 0)
@@ -68,7 +65,7 @@ namespace EMS.Core.Entities.ManagerAggregate
                 throw new ArgumentException("The promotion amount must be greater than 0");
             }
 
-            var employee = _employees.Find(e => e.EmployeeId == employeeId);
+            var employee = _employees.Find(e => e.EmployeeGuid == employeeGuid);
 
             if (employee == null)
             {
@@ -78,11 +75,11 @@ namespace EMS.Core.Entities.ManagerAggregate
             employee.Salary += promotionAmount;
         }
 
-        public void DemoteEmployee(Guid employeeId, decimal demotionAmount)
+        public void DemoteEmployee(Guid employeeGuid, decimal demotionAmount)
         {
-            if (employeeId == null)
+            if (employeeGuid == null)
             {
-                throw new ArgumentNullException(nameof(employeeId));
+                throw new ArgumentNullException(nameof(employeeGuid));
             }
 
             if (demotionAmount <= 0)
@@ -90,7 +87,7 @@ namespace EMS.Core.Entities.ManagerAggregate
                 throw new ArgumentException("The demotion amount must be greater than 0");
             }
 
-            var employee = _employees.Find(e => e.EmployeeId == employeeId);
+            var employee = _employees.Find(e => e.EmployeeGuid == employeeGuid);
 
             if (employee == null)
             {
@@ -105,7 +102,7 @@ namespace EMS.Core.Entities.ManagerAggregate
             employee.Salary -= demotionAmount;
         }
 
-        private bool ValidateState(string firstName, string lastName, int age, string email)
+        private static bool ValidateState(string firstName, string lastName, int age)
         {
             if (string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName))
             {
@@ -113,11 +110,6 @@ namespace EMS.Core.Entities.ManagerAggregate
             }
 
             if (age < 18)
-            {
-                return false;
-            }
-
-            if (string.IsNullOrWhiteSpace(email))
             {
                 return false;
             }
