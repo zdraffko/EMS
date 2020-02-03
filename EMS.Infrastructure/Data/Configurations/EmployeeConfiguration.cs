@@ -16,6 +16,10 @@ namespace EMS.Infrastructure.Data.Configurations
 
             employeeBuilder.Property(e => e.Department)
                 .IsRequired();
+
+            employeeBuilder.Property(e => e.Salary)
+                .HasColumnType("decimal(9,2)")
+                .IsRequired();
         }
     }
 }

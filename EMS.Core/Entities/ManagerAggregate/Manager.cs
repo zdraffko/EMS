@@ -17,6 +17,8 @@ namespace EMS.Core.Entities.ManagerAggregate
         private readonly List<Employee> _employees;
         public IReadOnlyCollection<Employee> Employees => _employees;
 
+        private Manager() { }
+
         public Manager(string firstName, string lastName, int age)
         {
             if (!ValidateState(firstName, lastName, age))

@@ -18,6 +18,8 @@ namespace EMS.Core.Entities.ManagerAggregate
 
         public Guid ManagerGuid { get; }
 
+        private Employee() { }
+
         public Employee(string firstName, string lastName, int age, string department, decimal salary, Guid managerGuid)
         {
             if (!ValidateState(firstName, lastName, age, department, salary))
