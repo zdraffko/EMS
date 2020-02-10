@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EMS.Core.Entities.ManagerAggregate
+namespace EMS.Core.Domain.Entities.ManagerAggregate
 {
     public class Employee : BaseEntity
     {

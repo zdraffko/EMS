@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
-using EMS.Core.Entities.ManagerAggregate;
+using EMS.Core.Domain.Entities.ManagerAggregate;
 
-namespace EMS.Core.Interfaces
+namespace EMS.Core.Domain.Interfaces
 {
     public interface IManagerRepository : IRepository<Manager>
     {

@@ -1,4 +1,4 @@
-﻿namespace EMS.Core.Entities
+﻿namespace EMS.Core.Domain.Entities
 {
     public abstract class BaseEntity
     {

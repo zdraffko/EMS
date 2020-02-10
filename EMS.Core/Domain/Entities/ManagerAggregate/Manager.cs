@@ -1,8 +1,8 @@
-﻿using EMS.Core.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using EMS.Core.Domain.Interfaces;
 
-namespace EMS.Core.Entities.ManagerAggregate
+namespace EMS.Core.Domain.Entities.ManagerAggregate
 {
     public class Manager : BaseEntity, IAggregateRoot
     {
