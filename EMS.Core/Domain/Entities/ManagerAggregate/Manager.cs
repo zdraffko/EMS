@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using EMS.Core.Domain.Exceptions;
 using EMS.Core.Domain.Interfaces;
 
 namespace EMS.Core.Domain.Entities.ManagerAggregate
@@ -23,7 +24,7 @@ namespace EMS.Core.Domain.Entities.ManagerAggregate
         {
             if (!ValidateState(firstName, lastName, age))
             {
-                throw new Exception("Constructor is invalid");
+                throw new InvalidManagerStateException("Manager constructor is invalid");
             }
 
             ManagerGuid = Guid.NewGuid();
@@ -49,7 +50,7 @@ namespace EMS.Core.Domain.Entities.ManagerAggregate
 
             if (employee == null)
             {
-                throw new Exception("Employee not found");
+                throw new EmployeeNotFoundException();
             }
 
             _employees.Remove(employee);
@@ -71,7 +72,7 @@ namespace EMS.Core.Domain.Entities.ManagerAggregate
 
             if (employee == null)
             {
-                throw new Exception("Employee not found");
+                throw new EmployeeNotFoundException();
             }
 
             employee.Salary += promotionAmount;
@@ -93,12 +94,12 @@ namespace EMS.Core.Domain.Entities.ManagerAggregate
 
             if (employee == null)
             {
-                throw new Exception("Employee not found");
+                throw new EmployeeNotFoundException();
             }
 
             if (employee.Salary - demotionAmount <= 0)
             {
-                throw new Exception("The new salary cannot be less than or equal to 0");
+                throw new InvalidEmployeeSalaryException("The new salary cannot be less than or equal to 0");
             }
 
             employee.Salary -= demotionAmount;

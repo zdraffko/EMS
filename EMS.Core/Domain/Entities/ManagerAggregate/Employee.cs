@@ -1,4 +1,5 @@
 ﻿using System;
+using EMS.Core.Domain.Exceptions;
 
 namespace EMS.Core.Domain.Entities.ManagerAggregate
 {
@@ -24,7 +25,7 @@ namespace EMS.Core.Domain.Entities.ManagerAggregate
         {
             if (!ValidateState(firstName, lastName, age, department, salary))
             {
-                throw new Exception();
+                throw new InvalidEmployeeStateException("Employee constructor is invalid");
             }
 
             EmployeeGuid = Guid.NewGuid();
