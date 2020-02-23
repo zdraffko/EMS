@@ -1,4 +1,5 @@
 ﻿using EMS.Core.Domain.Entities.ManagerAggregate;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace EMS.Infrastructure.Data

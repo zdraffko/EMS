@@ -1,4 +1,5 @@
 ﻿using System;
+
 using EMS.Core.Domain.Exceptions;
 
 namespace EMS.Core.Domain.Entities.ManagerAggregate
