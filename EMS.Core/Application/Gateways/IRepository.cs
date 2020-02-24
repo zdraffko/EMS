@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace EMS.Core.Domain.Interfaces
+using EMS.Core.Domain.Interfaces;
+
+namespace EMS.Core.Application.Gateways
 {
     public interface IRepository<TEntity> where TEntity : IAggregateRoot
     {
