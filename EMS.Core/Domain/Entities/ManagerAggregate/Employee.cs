@@ -18,11 +18,9 @@ namespace EMS.Core.Domain.Entities.ManagerAggregate
 
         public decimal Salary { get; set; }
 
-        public Guid ManagerGuid { get; }
-
         private Employee() { }
 
-        public Employee(string firstName, string lastName, int age, Department department, decimal salary, Guid managerGuid)
+        public Employee(string firstName, string lastName, int age, Department department, decimal salary)
         {
             if (!ValidateState(firstName, lastName, age, salary))
             {
@@ -35,7 +33,6 @@ namespace EMS.Core.Domain.Entities.ManagerAggregate
             Age = age;
             Department = department;
             Salary = salary;
-            ManagerGuid = managerGuid;
         }
 
         private static bool ValidateState(string firstName, string lastName, int age, decimal salary)

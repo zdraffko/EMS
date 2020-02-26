@@ -9,15 +9,25 @@ namespace EMS.Infrastructure.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<Manager> managerBuilder)
         {
+            managerBuilder.HasKey(m => m.Id);
+
+            managerBuilder.Property(m => m.ManagerGuid)
+                .IsRequired();
+
+            managerBuilder.Property(m => m.FirstName)
+                .IsRequired()
+                .HasMaxLength(50);
+
+            managerBuilder.Property(m => m.LastName)
+                .IsRequired()
+                .HasMaxLength(50);
+
+            managerBuilder.Property(m => m.Age)
+                .IsRequired();
+
             managerBuilder.HasMany(m => m.Employees)
                 .WithOne()
                 .OnDelete(DeleteBehavior.Restrict);
-
-            managerBuilder.Property(m => m.FirstName)
-                .IsRequired();
-
-            managerBuilder.Property(m => m.LastName)
-                .IsRequired();
         }
     }
 }
