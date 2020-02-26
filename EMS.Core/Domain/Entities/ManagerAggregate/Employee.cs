@@ -14,7 +14,7 @@ namespace EMS.Core.Domain.Entities.ManagerAggregate
 
         public int Age { get; }
 
-        public string Department { get; }
+        public Department Department { get; }
 
         public decimal Salary { get; set; }
 
@@ -22,9 +22,9 @@ namespace EMS.Core.Domain.Entities.ManagerAggregate
 
         private Employee() { }
 
-        public Employee(string firstName, string lastName, int age, string department, decimal salary, Guid managerGuid)
+        public Employee(string firstName, string lastName, int age, Department department, decimal salary, Guid managerGuid)
         {
-            if (!ValidateState(firstName, lastName, age, department, salary))
+            if (!ValidateState(firstName, lastName, age, salary))
             {
                 throw new InvalidEmployeeStateException("Employee constructor is invalid");
             }
@@ -38,7 +38,7 @@ namespace EMS.Core.Domain.Entities.ManagerAggregate
             ManagerGuid = managerGuid;
         }
 
-        private static bool ValidateState(string firstName, string lastName, int age, string department, decimal salary)
+        private static bool ValidateState(string firstName, string lastName, int age, decimal salary)
         {
             if (string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName))
             {
@@ -46,11 +46,6 @@ namespace EMS.Core.Domain.Entities.ManagerAggregate
             }
 
             if (age < 18)
-            {
-                return false;
-            }
-
-            if (string.IsNullOrWhiteSpace(department))
             {
                 return false;
             }

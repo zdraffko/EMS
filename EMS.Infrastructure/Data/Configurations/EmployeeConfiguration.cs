@@ -2,6 +2,7 @@
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EMS.Infrastructure.Data.Configurations
 {
@@ -16,7 +17,8 @@ namespace EMS.Infrastructure.Data.Configurations
                 .IsRequired();
 
             employeeBuilder.Property(e => e.Department)
-                .IsRequired();
+                .IsRequired()
+                .HasConversion<string>();
 
             employeeBuilder.Property(e => e.Salary)
                 .HasColumnType("decimal(9,2)")

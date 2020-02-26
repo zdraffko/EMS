@@ -35,7 +35,7 @@ namespace EMS.Core.Domain.Entities.ManagerAggregate
             _employees = new List<Employee>();
         }
 
-        public void HireEmployee(string firstName, string lastName, int age, string department, decimal salary)
+        public void HireEmployee(string firstName, string lastName, int age, Department department, decimal salary)
         {
             _employees.Add(new Employee(firstName, lastName, age, department, salary, ManagerGuid));
         }
