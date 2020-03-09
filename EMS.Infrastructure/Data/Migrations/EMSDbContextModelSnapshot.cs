@@ -64,7 +64,7 @@ namespace EMS.Infrastructure.Data.Migrations
                             Id = 1,
                             Age = 20,
                             Department = "Development",
-                            EmployeeGuid = new Guid("0726769f-9be5-4f12-9a00-cf2eb89b7ac6"),
+                            EmployeeGuid = new Guid("22f60d0a-54a3-4a12-854d-43225b5d281f"),
                             FirstName = "Employee",
                             LastName = "One",
                             ManagerId = 1,
@@ -75,7 +75,7 @@ namespace EMS.Infrastructure.Data.Migrations
                             Id = 2,
                             Age = 22,
                             Department = "HR",
-                            EmployeeGuid = new Guid("7308c95c-474e-480a-93c4-8e60643b5403"),
+                            EmployeeGuid = new Guid("ac20b57a-2445-4437-96fe-4860b6b16c1f"),
                             FirstName = "Employee",
                             LastName = "Two",
                             ManagerId = 1,
@@ -86,7 +86,7 @@ namespace EMS.Infrastructure.Data.Migrations
                             Id = 3,
                             Age = 27,
                             Department = "Security",
-                            EmployeeGuid = new Guid("15892d7f-8dc0-473b-af85-4055bfaff724"),
+                            EmployeeGuid = new Guid("6cbb3bdb-91a4-45ab-951a-fca56806a797"),
                             FirstName = "Employee",
                             LastName = "Three",
                             ManagerId = 1,
@@ -128,7 +128,7 @@ namespace EMS.Infrastructure.Data.Migrations
                             Age = 24,
                             FirstName = "Manager",
                             LastName = "One",
-                            ManagerGuid = new Guid("589d2818-d3d9-4a84-83ae-e9550c909693")
+                            ManagerGuid = new Guid("a22fdbcd-b327-4412-bb02-291aca709752")
                         });
                 });
 

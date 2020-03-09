@@ -5,12 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Data\Migrations\20200226183303_DepartmentUpdate.cs" />
-    <Compile Remove="Data\Migrations\20200226183303_DepartmentUpdate.Designer.cs" />
-    <Compile Remove="Data\Migrations\20200226185539_DepartmentUpdate.cs" />
-    <Compile Remove="Data\Migrations\20200226185539_DepartmentUpdate.Designer.cs" />
-    <Compile Remove="Data\Migrations\20200226185651_DepartmentUpdate.cs" />
-    <Compile Remove="Data\Migrations\20200226185651_DepartmentUpdate.Designer.cs" />
+    <Compile Remove="Migrations\**" />
+    <EmbeddedResource Remove="Migrations\**" />
+    <None Remove="Migrations\**" />
   </ItemGroup>
 
   <ItemGroup>
