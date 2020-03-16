@@ -1,4 +1,5 @@
 using EMS.Core;
+using EMS.Infrastructure;
 using EMS.Infrastructure.Data;
 
 using Microsoft.AspNetCore.Builder;
@@ -31,6 +32,7 @@ namespace EMS.Web
             );
 
             services.RegisterApplication();
+            services.RegisterInfrastructure();
             services.RegisterWebComponents();
         }
 
