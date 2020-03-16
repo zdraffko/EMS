@@ -1,5 +1,6 @@
 ﻿using EMS.Core.Application.Ports;
 using EMS.Core.Application.UseCases.Manager.PromoteEmployeeUseCase.Models;
+
 using Microsoft.AspNetCore.Mvc;
 
 namespace EMS.Web.Presenters

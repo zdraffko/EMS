@@ -1,3 +1,4 @@
+using EMS.Core;
 using EMS.Infrastructure.Data;
 
 using Microsoft.AspNetCore.Builder;
@@ -27,7 +28,10 @@ namespace EMS.Web
 
             services.AddDbContextPool<EMSDbContext>(options =>
                 options.UseSqlServer(_configuration.GetConnectionString("DevConnection"))
-                );
+            );
+
+            services.RegisterApplication();
+            services.RegisterWebComponents();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

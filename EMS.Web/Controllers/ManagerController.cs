@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
+
 using EMS.Core.Application.UseCases.Manager.PromoteEmployeeUseCase;
 using EMS.Core.Application.UseCases.Manager.PromoteEmployeeUseCase.Models;
 using EMS.Web.Presenters;
+
 using Microsoft.AspNetCore.Mvc;
 
 namespace EMS.Web.Controllers
