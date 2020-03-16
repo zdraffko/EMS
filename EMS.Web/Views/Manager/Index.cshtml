@@ -1,5 +1,33 @@
 ﻿@{ ViewBag.Title = "Manager";}
+@model IReadOnlyCollection<EMS.Core.Domain.Entities.ManagerAggregate.Employee>
 
 <h1>Manager tab</h1>
 
-<a asp-action="PromoteEmployee" class="btn btn-outline-dark">Promote Employee</a>
+<table class="table">
+
+    <tbody>
+        @foreach (var employee in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(employees => employee.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(employees => employee.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(employees => employee.Salary)
+                </td>
+                <td>
+                </td>
+
+                <td>
+                    <a asp-action="PromoteEmployee"
+                       asp-route-employeeGuid="@employee.EmployeeGuid"
+                       asp-route-promotionAmpunt="1000"
+                       class="btn btn-outline-dark">Promote Employee</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

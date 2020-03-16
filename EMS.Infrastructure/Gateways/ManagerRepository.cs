@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 using EMS.Core.Application.Gateways;
@@ -69,6 +71,11 @@ namespace EMS.Infrastructure.Gateways
         public Task<Employee> DemoteEmployeeAsync(Guid managerGuid, Guid employeeGuid, decimal demotionAmount)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<IReadOnlyCollection<Employee>> GetAllEmployees(Guid managerGuid)
+        {
+            return _context.Employees.Where(e => e.ManagerGuid == managerGuid).ToList().AsReadOnly();
         }
     }
 }

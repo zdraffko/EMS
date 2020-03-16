@@ -18,6 +18,8 @@ namespace EMS.Core.Domain.Entities.ManagerAggregate
 
         public decimal Salary { get; set; }
 
+        public Guid ManagerGuid { get; }
+
         private Employee() { }
 
         public Employee(string firstName, string lastName, int age, Department department, decimal salary)

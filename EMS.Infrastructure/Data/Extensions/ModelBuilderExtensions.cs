@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using EMS.Core.Domain.Entities.ManagerAggregate;
 
 using Microsoft.EntityFrameworkCore;
@@ -9,12 +10,14 @@ namespace EMS.Infrastructure.Data.Extensions
     {
         public static void SeedDatabase(this ModelBuilder modelBuilder)
         {
+            var managerGuid = Guid.NewGuid();
+
             modelBuilder.Entity<Manager>()
                 .HasData(
                     new
                     {
                         Id = 1,
-                        ManagerGuid = Guid.NewGuid(),
+                        ManagerGuid = managerGuid,
                         FirstName = "Manager",
                         LastName = "One",
                         Age = 24
@@ -32,7 +35,8 @@ namespace EMS.Infrastructure.Data.Extensions
                         LastName = "One",
                         Age = 20,
                         Department = Department.Development,
-                        Salary = 5000m
+                        Salary = 5000m,
+                        ManagerGuid = managerGuid
                     },
                     new
                     {
@@ -43,7 +47,8 @@ namespace EMS.Infrastructure.Data.Extensions
                         LastName = "Two",
                         Age = 22,
                         Department = Department.HR,
-                        Salary = 2000m
+                        Salary = 2000m,
+                        ManagerGuid = managerGuid
                     },
                     new
                     {
@@ -54,7 +59,8 @@ namespace EMS.Infrastructure.Data.Extensions
                         LastName = "Three",
                         Age = 27,
                         Department = Department.Security,
-                        Salary = 7000m
+                        Salary = 7000m,
+                        ManagerGuid = managerGuid
                     }
                     );
         }
