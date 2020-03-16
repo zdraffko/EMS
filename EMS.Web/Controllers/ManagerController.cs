@@ -1,14 +1,33 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using System.Threading.Tasks;
+using EMS.Core.Application.UseCases.Manager.PromoteEmployeeUseCase;
+using EMS.Core.Application.UseCases.Manager.PromoteEmployeeUseCase.Models;
+using EMS.Web.Presenters;
+using Microsoft.AspNetCore.Mvc;
 
 namespace EMS.Web.Controllers
 {
     public class ManagerController : Controller
     {
+        private readonly IPromoteEmployeeInputPort _promoteEmployeeInputPort;
+        private readonly PromoteEmployeePresenter _promoteEmployeePresenter;
+
+        public ManagerController(IPromoteEmployeeInputPort promoteEmployeeInputPort,
+            PromoteEmployeePresenter promoteEmployeePresenter)
+        {
+            _promoteEmployeeInputPort = promoteEmployeeInputPort;
+            _promoteEmployeePresenter = promoteEmployeePresenter;
+        }
+
         public IActionResult Index() => View();
 
-        public IActionResult PromoteEmployee()
+        public async Task<IActionResult> PromoteEmployee(Guid employeeGuid, decimal promotionAmpunt)
         {
-            return View();
+            await _promoteEmployeeInputPort.Handle(
+                new PromoteEmployeeInputModel(employeeGuid, promotionAmpunt),
+                _promoteEmployeePresenter);
+
+            return _promoteEmployeePresenter.Result;
         }
     }
 }
