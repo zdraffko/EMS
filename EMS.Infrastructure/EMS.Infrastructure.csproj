@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,10 +11,30 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Data\Migrations\20200317142844_AddedIdentity.cs" />
+    <Compile Remove="Data\Migrations\20200317142844_AddedIdentity.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200317143442_AddedIdentity.cs" />
+    <Compile Remove="Data\Migrations\20200317143442_AddedIdentity.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200317143554_AddedIdentity.cs" />
+    <Compile Remove="Data\Migrations\20200317143554_AddedIdentity.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200317163835_AddedIdentity.cs" />
+    <Compile Remove="Data\Migrations\20200317163835_AddedIdentity.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200317164542_AddedIdentity.cs" />
+    <Compile Remove="Data\Migrations\20200317164542_AddedIdentity.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200317171013_AddedIdentity.cs" />
+    <Compile Remove="Data\Migrations\20200317171013_AddedIdentity.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200317180510_AddedIdentity.cs" />
+    <Compile Remove="Data\Migrations\20200317180510_AddedIdentity.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200317190446_AddedIdentity.cs" />
+    <Compile Remove="Data\Migrations\20200317190446_AddedIdentity.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Data\Repositories\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.1">
       <PrivateAssets>all</PrivateAssets>

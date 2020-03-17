@@ -23,6 +23,6 @@ namespace EMS.Core.Application.Gateways
 
         Task<Employee> DemoteEmployeeAsync(Guid managerGuid, Guid employeeGuid, decimal demotionAmount);
 
-        Task<IReadOnlyCollection<Employee>> GetAllEmployees(Guid managerGuid);
+        IReadOnlyCollection<Employee> GetAllEmployees(Guid managerGuid);
     }
 }

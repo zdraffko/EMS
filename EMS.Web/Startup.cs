@@ -1,9 +1,11 @@
 using EMS.Core;
 using EMS.Infrastructure;
 using EMS.Infrastructure.Data;
+using EMS.Infrastructure.Identity;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -31,6 +33,15 @@ namespace EMS.Web
                 options.UseSqlServer(_configuration.GetConnectionString("DevConnection"))
             );
 
+            services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+                {
+                    options.Password.RequireUppercase = false;
+                    options.Password.RequireLowercase = false;
+                    options.Password.RequireNonAlphanumeric = false;
+                    options.User.RequireUniqueEmail = true;
+                })
+                .AddEntityFrameworkStores<EMSDbContext>();
+
             services.RegisterApplication();
             services.RegisterInfrastructure();
             services.RegisterWebComponents();
@@ -44,6 +55,8 @@ namespace EMS.Web
             }
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {

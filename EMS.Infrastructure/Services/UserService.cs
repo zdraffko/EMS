@@ -15,10 +15,11 @@ namespace EMS.Infrastructure.Services
 
         public Manager GetCurrentUser()
         {
-            var manager = _context.Managers
-                .FirstOrDefault(m => m.ManagerGuid == Guid.Parse("783E92F6-85C0-48CD-9A09-C25BEAFC570C"));
+            //var manager = _context.Managers
+            //    .FirstOrDefault(m => m.ManagerGuid == Guid.Parse("783E92F6-85C0-48CD-9A09-C25BEAFC570C"));
 
-            return manager;
+            //return manager;
+            return null;
         }
     }
 }

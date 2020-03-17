@@ -73,7 +73,7 @@ namespace EMS.Infrastructure.Gateways
             throw new NotImplementedException();
         }
 
-        public async Task<IReadOnlyCollection<Employee>> GetAllEmployees(Guid managerGuid)
+        public IReadOnlyCollection<Employee> GetAllEmployees(Guid managerGuid)
         {
             return _context.Employees.Where(e => e.ManagerGuid == managerGuid).ToList().AsReadOnly();
         }

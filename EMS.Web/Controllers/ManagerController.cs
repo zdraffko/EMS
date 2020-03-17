@@ -26,9 +26,9 @@ namespace EMS.Web.Controllers
             _managerRepository = managerRepository;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var employees = await _managerRepository
+            var employees = _managerRepository
                 .GetAllEmployees(Guid.Parse("783E92F6-85C0-48CD-9A09-C25BEAFC570C"));
 
             return View(employees);

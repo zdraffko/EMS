@@ -1,15 +1,15 @@
 ﻿using EMS.Core.Domain.Entities.ManagerAggregate;
 using EMS.Infrastructure.Data.Extensions;
+using EMS.Infrastructure.Identity;
 
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace EMS.Infrastructure.Data
 {
-    public class EMSDbContext : DbContext
+    public class EMSDbContext : IdentityDbContext<ApplicationUser>
     {
         public EMSDbContext(DbContextOptions options) : base(options) { }
-
-        public DbSet<Manager> Managers { get; set; }
 
         public DbSet<Employee> Employees { get; set; }
 
