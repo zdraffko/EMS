@@ -16,12 +16,14 @@ namespace EMS.Core.Domain.Entities.ManagerAggregate
 
         public int Age { get; }
 
+        public string Email { get; }
+
         private readonly List<Employee> _employees;
         public IReadOnlyCollection<Employee> Employees => _employees;
 
         private Manager() { }
 
-        public Manager(string firstName, string lastName, int age)
+        public Manager(string firstName, string lastName, int age, string email)
         {
             if (!ValidateState(firstName, lastName, age))
             {
@@ -32,6 +34,7 @@ namespace EMS.Core.Domain.Entities.ManagerAggregate
             FirstName = firstName;
             LastName = lastName;
             Age = age;
+            Email = email;
             _employees = new List<Employee>();
         }
 

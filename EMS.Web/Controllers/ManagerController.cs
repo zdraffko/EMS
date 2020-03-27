@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 
 using EMS.Core.Application.Gateways;
+using EMS.Core.Application.Infrastructure;
 using EMS.Core.Application.UseCases.Manager.PromoteEmployeeUseCase;
 using EMS.Core.Application.UseCases.Manager.PromoteEmployeeUseCase.Models;
 using EMS.Web.Presenters;
@@ -15,21 +16,26 @@ namespace EMS.Web.Controllers
         private readonly IPromoteEmployeeInputPort _promoteEmployeeInputPort;
         private readonly PromoteEmployeePresenter _promoteEmployeePresenter;
         private readonly IManagerRepository _managerRepository;
+        private readonly IUserService _userService;
 
         public ManagerController(
             IPromoteEmployeeInputPort promoteEmployeeInputPort,
             PromoteEmployeePresenter promoteEmployeePresenter,
-            IManagerRepository managerRepository)
+            IManagerRepository managerRepository,
+            IUserService userService)
         {
             _promoteEmployeeInputPort = promoteEmployeeInputPort;
             _promoteEmployeePresenter = promoteEmployeePresenter;
             _managerRepository = managerRepository;
+            _userService = userService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            var managerGuid = await _userService.GetUserGuidAsync(User);
+
             var employees = _managerRepository
-                .GetAllEmployees(Guid.Parse("783E92F6-85C0-48CD-9A09-C25BEAFC570C"));
+                .GetAllEmployees(managerGuid);
 
             return View(employees);
         }
@@ -38,7 +44,7 @@ namespace EMS.Web.Controllers
         public async Task<IActionResult> PromoteEmployee(Guid employeeGuid, decimal promotionAmpunt)
         {
             await _promoteEmployeeInputPort.Handle(
-                new PromoteEmployeeInputModel(employeeGuid, promotionAmpunt),
+                new PromoteEmployeeInputModel(User, employeeGuid, promotionAmpunt),
                 _promoteEmployeePresenter);
 
             return _promoteEmployeePresenter.Result;

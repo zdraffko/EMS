@@ -23,14 +23,14 @@ namespace EMS.Core.Application.UseCases.Manager.PromoteEmployeeUseCase
 
         public async Task Handle(PromoteEmployeeInputModel input, IOutputPort<PromoteEmployeeOutputModel> output)
         {
-            var manager = _userService.GetCurrentUser();
-            if (manager == null)
+            var managerGuid = await _userService.GetUserGuidAsync(input.User);
+
+            if (managerGuid == Guid.Empty)
             {
                 output.Fail();
                 return;
             }
 
-            var managerGuid = manager.ManagerGuid;
             var employeeGuid = input.EmployeeGuid;
             var promotionAmount = input.PromotionAmount;
 
