@@ -1,4 +1,7 @@
 # EMS
-A simple employee management system
-
-Build with ASP.NET Core and EF Core. This is my first attempt at Domain Driven Architecture with Repository pattern.
+### Description
+An ASP.NET Core MVC application where managers can manage their employees.
+### Technologies used
+* ASP.NET Core
+* EF Core
+* Microsoft SQL Server
